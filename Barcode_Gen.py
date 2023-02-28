@@ -1,14 +1,25 @@
 from barcode.writer import ImageWriter
 from barcode import EAN13
 
-# number = '9021230168366'
 
-number = input("Enter the number: ")
+def check_num(num):
+    if len(str(num)) == 12 and all(char.isdigit() == True for char in str(num)):
+        return True
+    print('\nInvalid Format or Length!')
+    return False
+
 
 def num_to_code(num):
-    code = EAN13(num, writer=ImageWriter())
-    return code
+    return EAN13(str(num), writer=ImageWriter())
+
 
 def main():
-    my_code = num_to_code(number)
-    my_code.save("codes\\code2")
+    while True:
+        number = input("\nEnter the number: ")
+        if check_num(number):
+            num_to_code(number).save('Ribakood')
+            break
+
+
+if __name__ == '__main__':
+    main()
