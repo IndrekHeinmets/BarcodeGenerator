@@ -5,7 +5,7 @@ from barcode import EAN13
 def check_num(num):
     if len(str(num)) == 12 and all(char.isdigit() == True for char in str(num)):
         return True
-    print('\nInvalid Format or Length!')
+    print('\nVale formaat või pikkus!')
     return False
 
 
@@ -15,7 +15,7 @@ def num_to_code(num):
 
 def main():
     while True:
-        number = input("\nEnter the number: ")
+        number = input("\nSisesta number: ")
         if check_num(number):
             num_to_code(number).save('Ribakood')
             break
