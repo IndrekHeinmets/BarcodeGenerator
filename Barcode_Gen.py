@@ -1,12 +1,19 @@
 from barcode.writer import ImageWriter
 from barcode import EAN13
 
-
+    
 def check_num(num):
-    if len(str(num)) == 12 and all(char.isdigit() == True for char in str(num)):
+    if len(str(num)) not in [12, 13]:
+        if not str(num).isdigit():
+            print('\nVale Formaat ja Pikkus! (12-13 numbrit)')
+        else:
+            print('\nVale Pikkus! (12-13)')
+        return False
+    elif not str(num).isdigit():
+        print('\nVale Formaat (numbrid)!')
+        return False
+    else:
         return True
-    print('\nVale formaat või pikkus!')
-    return False
 
 
 def num_to_code(num):
